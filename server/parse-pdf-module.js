@@ -90,7 +90,7 @@ async function processPdf(pdfPath, outputJsonPath) {
 function formatLapsArray(lapsArray) {
   return {
     "lapNumber": lapsArray[0],
-    "bestLap": lapsArray[1],
+    "lapTime": lapsArray[1],
     "gapBestLap": lapsArray[2],
     "leaderLapGap": lapsArray[3],
     "totalTime": lapsArray[4],  

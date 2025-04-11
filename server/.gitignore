@@ -3,6 +3,8 @@ node_modules/
 .pnp/
 .pnp.js
 
+results/
+uploads/
 # Build outputs
 build/
 dist/

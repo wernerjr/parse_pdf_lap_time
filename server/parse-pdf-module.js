@@ -59,7 +59,17 @@ function extractPilotData(text) {
         timeData = [];
       } else {
         // Linha com múltiplos tempos
-        timeData = line.split(" ").filter(item => item); // Remove itens vazios
+        const lineWithoutSpaces = line.replace(/\s+/g, "");
+        
+        let tempLine = lineWithoutSpaces;
+        // Extrai os últimos 4 tempos
+        for (let i = 0; i < 4; i++) {
+          timeData.push(tempLine.slice(-12));
+          tempLine = tempLine.slice(0, -12);
+        }
+        // Extrai o tempo restante
+        timeData.push(tempLine);
+        timeData.reverse();
       }
     }
   }

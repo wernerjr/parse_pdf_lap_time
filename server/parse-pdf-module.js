@@ -55,7 +55,7 @@ function extractPilotData(text) {
       if (!line.includes(" ")) {
         // Linha contendo apenas um tempo
         timeData.push(line);
-        currentPilot.laps.push([...timeData]); // Cria uma cópia do array
+        currentPilot.laps.push(formatLapsArray(timeData)); // Cria uma cópia do array
         timeData = [];
       } else {
         // Linha com múltiplos tempos
@@ -84,6 +84,17 @@ async function processPdf(pdfPath, outputJsonPath) {
   } catch (error) {
     console.error('Erro ao processar o PDF:', error);
     throw error;
+  }
+}
+
+function formatLapsArray(lapsArray) {
+  return {
+    "lapNumber": lapsArray[0],
+    "bestLap": lapsArray[1],
+    "gapBestLap": lapsArray[2],
+    "leaderLapGap": lapsArray[3],
+    "totalTime": lapsArray[4],  
+    "averageSpeed": lapsArray[5],
   }
 }
 
